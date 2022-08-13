@@ -1,5 +1,7 @@
 <?php
 $contents = $block->mappedByKey();
+$module = \App\Models\Module::where('name', 'activitys')->first();
+$items = $module->items;
 ?>
 <section class="activity">
     <div class="activity__container content-container">
@@ -14,19 +16,21 @@ $contents = $block->mappedByKey();
             {{ $contents['subtitle']['value'] ?? '' }}
         </p>
         <div class="activity__list">
-            @foreach($block->localeIterations as $iteration)
+            @foreach($items as $item)
                 @php
-                    $properties = $iteration->mappedByKey();
+                    $properties = $item->props->mapWithKeys(function ($prop) {
+                    return [$prop->type->key => $prop->value];
+                    });
                 @endphp
                 <div class="activity__item">
                     <div class="activity__item-img">
-                        <img src="{{  url('/') . '/uploads/contents/' . $properties['icon']['value'] ?? '' }}" alt="{{ $properties['desc']['value'] ?? "" }}">
+                        <img src="{{  url('/') . '/uploads/module_items/' . $properties['icon-item'] ?? '' }}" alt="{{ $properties['title-item'] ?? "" }}">
 {{--                        <img src="{{  url('/img/templates/activity/icon' . $loop->iteration . '.svg') }}" alt="{{ $properties['desc']['value'] ?? "" }}">--}}
                     </div>
                     <p class="activity__item-desc">
-                        {{ $properties['desc']['value'] ?? "" }}
+                        {{ $properties['title-item'] ?? "" }}
                     </p>
-                    <a href="{{ $properties['lnk']['value'] ?? "" }}">{{ $properties['button']['value'] ?? "" }}
+                    <a href="{{ route('client.activitys.item', ['alias' => $item->seo->alias]) }}">Подробнее
                         <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="4" y="0.5" width="1" height="9" fill="#ABB2D0"/>
                             <rect y="5.5" width="1" height="9" transform="rotate(-90 0 5.5)" fill="#ABB2D0"/>

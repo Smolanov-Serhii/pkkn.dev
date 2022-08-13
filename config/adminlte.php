@@ -251,16 +251,16 @@ return [
             ],
         ],
         [
-            'text'        => 'Сервисы',
+            'text'        => 'Услуги',
             'icon'        => '/img/admin/blog.svg',
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Список сервисов ',
+                    'text' => 'Список услуг ',
                     'url'  => '/admin/modules/items/list/40',
                 ],
                 [
-                    'text' => 'Рубрики сервисов',
+                    'text' => 'Рубрики услуг',
                     'url'  => '/admin/taxonomy/items/list/16',
                 ],
             ],
@@ -291,6 +291,21 @@ return [
                 ],
                 [
                     'text' => 'Рубрики работ',
+                    'url'  => '/admin/taxonomy/items/list/16',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Деятельность',
+            'icon'        => '/img/admin/blog.svg',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Список деятельностей ',
+                    'url'  => '/admin/modules/items/list/44',
+                ],
+                [
+                    'text' => 'Рубрики деятельностей',
                     'url'  => '/admin/taxonomy/items/list/16',
                 ],
             ],
