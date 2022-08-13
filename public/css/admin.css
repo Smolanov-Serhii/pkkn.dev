@@ -517,7 +517,7 @@ th.clicked svg {
 
 .panel-group .panel.panel-default,
 .menu.ui-sortable .panel.panel-default {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border: 1px solid #c3c4c7;
 }
 
@@ -528,7 +528,7 @@ th.clicked svg {
 
 .panel-group .panel.panel-default .panel-heading,
 .menu.ui-sortable .panel.panel-default .panel-heading {
-  padding: 1rem;
+  padding: 0.8rem;
   line-height: 1.5;
   color: #1d2327;
   background-color: #132238;
@@ -549,6 +549,26 @@ th.clicked svg {
 .menu.ui-sortable .panel.panel-default .item-list-body {
   background-color: #FFFFFF;
   max-height: 240px;
+}
+
+.variable-value #option_checkbox {
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.variable-value #option_checkbox input[type=checkbox] {
+  display: inline-block;
+  -ms-flex: none;
+      flex: none;
+  margin-right: 1rem;
+}
+
+.variable-value #option_checkbox label {
+  margin-bottom: 0;
 }
 
 

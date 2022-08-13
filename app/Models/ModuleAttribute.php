@@ -65,5 +65,7 @@ class ModuleAttribute extends Model
         'repeater',
         'time',
         'file',
+        'date',
+        'gallery',
     ];
 }

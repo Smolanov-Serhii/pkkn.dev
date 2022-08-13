@@ -51,4 +51,6 @@
 
 @section('adminlte_css')
     <link href="{{ asset('/css/summernote.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
+

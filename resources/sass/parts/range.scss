@@ -1,0 +1,96 @@
+.range{
+  margin-top: 90px;
+  margin-bottom: 90px;
+  &__container{
+    position: relative;
+    .design-l{
+      position: absolute;
+      bottom: -10px;
+      left: -30px;
+      z-index: -1;
+    }
+  }
+  &__tabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  &__tab{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: #131C42;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    &.active, &:hover{
+      position: relative;
+      border-bottom: 2px solid #0074FF;
+      color: #0074FF;
+      &:before{
+        content: "";
+        display: block;
+        bottom: -2px;
+        left: calc(50% - 10px);
+        position: absolute;
+        width: 20px;
+        height: 8px;
+        background-image: url('/../img/templates/range/arrow.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+      }
+    }
+  }
+  &__contents{
+    margin-top: 53px;
+  }
+  &__content{
+    display: none;
+    &.active{
+      display: flex;
+    }
+  }
+  &__items{
+    display: flex;
+    margin-right: -20px;
+    flex-wrap: wrap;
+    width: calc(100% + 20px);
+  }
+  &__item{
+    width: calc((100% / 6) - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 5px 50px rgba(19, 28, 66, 0.1);
+    border-radius: 10px;
+    padding: 42px 18px 25px 18px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: $transition;
+    &:hover{
+      background-color: #0074FF;
+      .range__item-title{
+        color: #FFFFFF;
+      }
+      .range__item-icon{
+        mix-blend-mode: plus-lighter;
+        filter: invert(100%);
+      }
+    }
+    &-icon{
+      text-align: center;
+      margin-bottom: 27px;
+      transition: $transition;
+    }
+    &-title{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 120%;
+      text-align: center;
+      color: #131C42;
+      margin-bottom: 0;
+      transition: $transition;
+    }
+  }
+}

@@ -105,7 +105,6 @@ class Block extends Model
 
     public function mappedByKey()
     {
-
         $contents = $this
             ->contents()
             ->with('translations')
@@ -118,26 +117,24 @@ class Block extends Model
             ->template
             ->attrs
             ->mapWithKeys(function ($attr) use ($contents) {
-                $fallback_locale = Language::where('iso', config('app.fallback_locale'))->first()->id;
-                if (isset($contents[$attr->id])) {
-                    $value = $contents[$attr->id]->mappedByLang()[Cache::get('languages')->get(App::getLocale())]??$contents[$attr->id]->mappedByLang()[$fallback_locale];
-                    if (empty($value->value)) {
-                        dd("sdfsf");
-                        $value = $contents[$attr->id]->mappedByLang()[$fallback_locale];
+                if (Variable::with('translate')->where('key', 'change_on_default_language')->first()->translate->value) {
+                    $fallback_locale = Language::where('iso', config('app.fallback_locale'))->first()->id;
+                    if (isset($contents[$attr->id])) {
+                        $value = $contents[$attr->id]->mappedByLang()[Cache::get('languages')->get(App::getLocale())]??$contents[$attr->id]->mappedByLang()[$fallback_locale];
+                        if (empty($value->value)) {
+                            $value = $contents[$attr->id]->mappedByLang()[$fallback_locale];
+                        }
+                    } else {
+                        $value = $attr;
                     }
                 } else {
-                    $value = $attr;
+                    $value = isset($contents[$attr->id])
+                        ? $contents[$attr->id]->mappedByLang()[Cache::get('languages')->get(App::getLocale())]
+                        : $attr;
                 }
-//                $value = isset($contents[$attr->id])
-//                    ? $contents[$attr->id]->mappedByLang()[Cache::get('languages')->get(App::getLocale())]??$contents[$attr->id]->mappedByLang()[$fallback_locale]
-//                    : $attr;
                 return [$attr->key => $value];
             });
     }
-
-//    public function mappedRepeator () {
-//        return $this->
-//    }
 
     // PROPERTIES CONTENT
     /**
@@ -207,7 +204,6 @@ class Block extends Model
                 ->get(),
             'iterations' => $this->groupedIterationsByRepeaterId($this, $language)
         ]);
-//dd($fillings['contents']);
         return $fillings;
     }
 }

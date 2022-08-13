@@ -30,13 +30,15 @@
         <div class="btn-group">
             <a href="{{ route('admin.pages.edit', ['page' => $page]) }}" class="btn btn-success"> <i class="fas fa-pen"></i> </a>
             <a style="margin: 0 3px" href="{{ route('admin.pages.content.update', ['page' => $page]) }}" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
-            <form method="POST" action="{{ route('admin.pages.delete', [ 'page'=> $page ]) }}">
-                @csrf
-                <input type="hidden" name="_method" value="DELETE">
-                <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Вы уверены?')">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            </form>
+            @if(!$page->not_del)
+                <form method="POST" action="{{ route('admin.pages.delete', [ 'page'=> $page ]) }}">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Вы уверены?')">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </form>
+            @endif
         </div>
     </td>
 

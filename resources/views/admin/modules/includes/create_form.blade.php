@@ -65,6 +65,16 @@ $u_id = rand(2e9, 2e12);
         >
     </div>
     <div class="form-group">
+        <label for="key"> @lang('modules.value') </label>
+        <input
+                name="value"
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="{{ __('modules.value') }}"
+        >
+    </div>
+    <div class="form-group">
         <label for="selectType"> @lang('block_option_contents.add_value') </code></label>
         <select
                 class="custom-select form-control-border type-selector"

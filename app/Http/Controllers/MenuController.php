@@ -14,17 +14,14 @@ use App\Models\Language;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
+//    /**
+//     * Display a listing of the resource.
+//     *
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function index()
+//    {
 //        $pages = Pages::all();
-
-
 //        $mapped_menu = Menu::all()->mapWithKeys(function ($model) {
 //            $key = $model->model .'-'. $model->model_id;
 //
@@ -75,14 +72,13 @@ class MenuController extends Controller
 //        $sorted_items = $concated_items->sort(function ($a, $b) {
 //            return $a['order'] <=> $b['order'];
 //        });
-//
-//dd($sorted_items);
-        $menu_items = Menu_items::all();
 
-        return view('admin.menu.index', compact('menu_items'));
-    }
+//        $menu_items = Menu_items::all();
 
-    public function index2()
+//        return view('admin.menu.index', compact('menu_items'));
+//    }
+
+    public function index()
     {
         $menuitems = '';
         $desiredMenu = '';
@@ -141,53 +137,53 @@ class MenuController extends Controller
 
         $modules = Module::all();
 
-        return view ('admin.menu.index2',['categories'=>Page::all(),'modules'=>$modules,'menus'=>menu::all(),'desiredMenu'=>$desiredMenu,'menuitems'=>$menuitems]);
+        return view ('admin.menu.index',['categories'=>Page::all(),'modules'=>$modules,'menus'=>menu::all(),'desiredMenu'=>$desiredMenu,'menuitems'=>$menuitems]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+//    /**
+//     * Store a newly created resource in storage.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function store(Request $request)
+//    {
+//        $data = $request->all('model');
+//        foreach ($data as $class) {
+//            foreach ($class as $class_name => $items) {
+//                foreach ($items as $id => $item) {
+//                    if($class_name == 'Menu_items' && is_array($item)) {
+//                        $menu_item = Menu_items::create($item);
+//                        $menu = Menu::firstOrCreate([
+//                            'model' => 'Menu_items',
+//                            'model_id' => $menu_item->id,
+//                            'section' => 'header',
+//                        ]);
+//                    } else {
+//                        if($item === 'true') {
+//                            $menu = Menu::firstOrCreate([
+//                                'model' => $class_name,
+//                                'model_id' => $id,
+//                                'section' => 'header',
+//                            ]);
+//                        } else {
+//                            Menu::where([
+//                                ['model', '=', $class_name],
+//                                ['model_id','=', $id],
+//                                ['section','=', 'header']
+//                            ])
+//                                ->delete();
+//                        }
+//                    }
+//
+//                }
+//            }
+//        }
+//
+//        return redirect(route('admin.menu.list'));
+//    }
+
     public function store(Request $request)
-    {
-        $data = $request->all('model');
-        foreach ($data as $class) {
-            foreach ($class as $class_name => $items) {
-                foreach ($items as $id => $item) {
-                    if($class_name == 'Menu_items' && is_array($item)) {
-                        $menu_item = Menu_items::create($item);
-                        $menu = Menu::firstOrCreate([
-                            'model' => 'Menu_items',
-                            'model_id' => $menu_item->id,
-                            'section' => 'header',
-                        ]);
-                    } else {
-                        if($item === 'true') {
-                            $menu = Menu::firstOrCreate([
-                                'model' => $class_name,
-                                'model_id' => $id,
-                                'section' => 'header',
-                            ]);
-                        } else {
-                            Menu::where([
-                                ['model', '=', $class_name],
-                                ['model_id','=', $id],
-                                ['section','=', 'header']
-                            ])
-                                ->delete();
-                        }
-                    }
-
-                }
-            }
-        }
-
-        return redirect(route('admin.menu.list'));
-    }
-
-    public function store2(Request $request)
     {
         $data = $request->all();
         if(menu::create($data)){

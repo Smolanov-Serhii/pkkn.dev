@@ -1,0 +1,95 @@
+.banner{
+  position: relative;
+  &__navigate{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    &-wrapper{
+      max-width: 1770px;
+      padding: 0 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      margin: auto;
+      > div{
+        position: relative;
+        z-index: 3;
+        cursor: pointer;
+        transition: $transition;
+        &.swiper-button-disabled{
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+  &__design{
+    img{
+      position: absolute;
+    }
+    &-left{
+      left: 138px;
+      bottom: 131px;
+    }
+    &-left-c{
+      left: 0;
+      top: 98px;
+    }
+    &-right{
+      right: 310px;
+      top: 118px;
+    }
+    &-right-c{
+      right: 0;
+      bottom: 68px;
+    }
+  }
+  &__container{
+
+  }
+  &__swiper{
+
+  }
+  &__slide{
+    position: relative;
+    &-img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  &__content{
+    position: relative;
+    z-index: 10;
+  }
+  &__block{
+    max-width: 600px;
+    padding: 253px 0;
+  }
+  &__title{
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+  }
+  &__subtitle{
+    font-size: 20px;
+    line-height: 120%;
+    color: #FFFFFF;
+  }
+  &__button{
+    margin-top: 54px;
+    min-width: 352px;
+  }
+}

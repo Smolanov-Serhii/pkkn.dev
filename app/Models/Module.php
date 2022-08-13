@@ -55,7 +55,9 @@ class Module extends Model
 
     protected $fillable = [
         'name',
-        'excerpt'
+        'value',
+        'excerpt',
+        'not_del',
     ];
 
     protected $softDelete_relations = [

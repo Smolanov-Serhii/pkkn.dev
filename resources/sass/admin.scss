@@ -446,13 +446,13 @@ th.clicked{
     border: 1px solid #c3c4c7;
     box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
     .panel.panel-default{
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         border: 1px solid #c3c4c7;
         input{
             margin-right: 1rem;
         }
         .panel-heading{
-            padding: 1rem;
+            padding: 0.8rem;
             line-height: 1.5;
             color: #1d2327;
             background-color: #132238 ;
@@ -469,6 +469,22 @@ th.clicked{
         .item-list-body{
             background-color: #FFFFFF;
             max-height: 240px;
+        }
+    }
+}
+
+.variable-value{
+    #option_checkbox{
+        justify-content: flex-start;
+        display: flex;
+        align-items: center;
+        input[type="checkbox"]{
+            display: inline-block;
+            flex: none;
+            margin-right: 1rem;
+        }
+        label{
+            margin-bottom: 0;
         }
     }
 }

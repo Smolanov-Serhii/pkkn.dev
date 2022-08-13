@@ -1,0 +1,104 @@
+.header{
+  border-bottom: 1px solid #E0E0E0;
+  &__container{
+    display: flex;
+    align-items: stretch;
+  }
+  .custom-logo-link{
+    width: 260px;
+    height: auto;
+    padding: 0 39px 0 0;
+    display: flex;
+    align-items: center;
+  }
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-left: 1px solid #E0E0E0;
+    border-right: 1px solid #E0E0E0;
+  }
+  &__socials{
+    width: 260px;
+    height: auto;
+    padding: 26px 0 26px 39px;
+    text-align: right;
+  }
+  &__nav{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #E0E0E0;
+    height: 50%;
+    form{
+      flex: 1;
+      position: relative;
+      height: 100%;
+      border-left: 1px solid #E0E0E0;
+      button{
+        height: 100%;
+        position: absolute;
+        right: 16px;
+        top: 0;
+        border: none;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+      }
+      input{
+        width: 100%;
+        border: none;
+        background-color: #F2F2F2;
+        height: 100%;
+        padding-left: 25px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+  }
+  &__list{
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+  &__item{
+    list-style: none;
+  }
+  &__lnk{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 30px;
+    transition: $transition;
+    &.current-page, &:hover{
+      background-color: #0074FF;
+      color: #FFFFFF;
+    }
+  }
+  &__contacts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    padding: 12px 0;
+    &-item{
+      text-decoration: none;
+      margin-right: 100px;
+      font-size: 14px;
+      line-height: 120%;
+      color: #131C42;
+      &:last-child{
+        margin-right: 0;
+      }
+      img{
+        margin-right: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.offer{
+  margin-top: 90px;
+  margin-bottom: 90px;
+  &__container{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  &__image{
+    width: calc(50% - 10px);
+    border-radius: 0 0 30px 0;
+    overflow-y: hidden;
+    position: relative;
+    &-bg{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .design-l{
+      position: absolute;
+      top: 117px;
+      left: 103px;
+    }
+  }
+  &__title{
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+  &__subtitle{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-bottom: 33px;
+  }
+  &__form{
+    width: calc(50% - 10px);
+    padding-right: calc((100% - 1300px) / 2);
+    &-wrapper{
+      background-color: #0074FF;
+      border-radius: 0 30px 0 30px;
+      padding: 54px 71px 36px 71px;
+      position: relative;
+      .design-r{
+        position: absolute;
+        bottom: 66px;
+        right: -200px;
+        z-index: -1;
+      }
+    }
+    form{
+      .hidden{
+        display: none;
+      }
+      img{
+        position: absolute;
+        left: 6px;
+        top: 8px;
+      }
+      .form-group{
+        position: relative;
+        margin-bottom: 14px;
+        input, textarea{
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid rgba(255,255,255,0.2);
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 100%;
+          color: #FFFFFF;
+          width: 100%;
+          padding: 9px 49px;
+        }
+        textarea{
+          height: 132px;
+          resize: none;
+        }
+      }
+      .button{
+        margin-top: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+        .darkblue-button{
+          min-width: 352px;
+        }
+      }
+      .agree{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        text-align: center;
+        color: #FFFFFF;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -47,6 +47,16 @@
     >
 </div>
 {{--                   INPUT TEMPLATE--}}
+<div class="input-group mb-3" id="option_checkbox" style="display: none">
+    <input
+            name="value"
+            value="1"
+            type="checkbox"
+            class="form-control input"
+            placeholder="{{ __('system.input') }}"
+    >
+</div>
+{{--                   INPUT TEMPLATE--}}
 <div class="input-group mb-3" id="option_textarea" style="display: none">
     <textarea
             class="form-control input"
@@ -95,14 +105,12 @@
                 value="{{$variable->name}}"
         >
     </div>
-    {{--    @dd($variable)--}}
     <div class="form-group">
         <label for="selectType"> @lang('block_option_contents.add_value') </code></label>
         <select
                 class="custom-select form-control-border"
                 id="type"
                 name="type">
-            {{--            <option value="-1" disabled hidden> @lang('variables.select_type') </option>--}}
             @foreach(\App\Models\Variable::TYPE_LIST as $id => $type)
                 <option
                         value="{{ $type }}"
@@ -158,7 +166,8 @@
                                 @case(0)
                                 <div class="input-group mb-3" id="option_image">
                                     <div class="custom-file">
-                                        <input type="file" id="optionFile" class="custom-file-input input" name="value[{{ $language->iso }}]">
+                                        <input type="file" id="optionFile" class="custom-file-input input"
+                                               name="value[{{ $language->iso }}]">
                                         <label class="custom-file-label"
                                                for="optionFile"> @lang('system.select image') </label>
                                     </div>
@@ -179,24 +188,35 @@
                                 @break
                                 @case(2)
                                 <div class="input-group mb-3" id="option_textarea">
-                    <textarea
-                            class="form-control input"
-                            rows="3"
-                            placeholder="{{ __('block_contents.content') }}"
-                            name="value[{{ $language->iso }}]"
-                    >{{ $value }}</textarea>
+                                    <textarea
+                                            class="form-control input"
+                                            rows="3"
+                                            placeholder="{{ __('block_contents.content') }}"
+                                            name="value[{{ $language->iso }}]"
+                                    >{{ $value }}</textarea>
                                 </div>
-                                {{--                   INPUT TEMPLATE--}}
-
                                 @break
                                 @case(3)
                                 <div class="input-group mb-3" id="option_editor">
-                    <textarea
-                            class="form-control input"
-                            rows="3"
-                            placeholder="{{ __('block_contents.content') }}"
-                            name="value[{{ $language->iso }}]"
-                    >{{ $value }}</textarea>
+                                    <textarea
+                                            class="form-control input"
+                                            rows="3"
+                                            placeholder="{{ __('block_contents.content') }}"
+                                            name="value[{{ $language->iso }}]"
+                                    >{{ $value }}</textarea>
+                                </div>
+                                @break
+                                @case(4)
+                                <div class="input-group mb-3" id="option_checkbox">
+                                    <input
+                                            name="value[{{ $language->iso }}]"
+                                            @if($value == 1) checked @endif
+                                            value="1"
+                                            type="checkbox"
+                                            class="form-control input"
+                                            placeholder="{{ __('block_contents.content') }}"
+                                    >
+                                    <label>В случае отсутствия контента на локаль подменять на контент языка по умолчанию?</label>
                                 </div>
                                 @break
                             @endswitch

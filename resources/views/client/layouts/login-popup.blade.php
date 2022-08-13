@@ -28,7 +28,7 @@
                     </label>
                     <label class="label-password" for="password">
                         <input name="password" type="password" id="password" placeholder="Пароль">
-                        <img class="show-pass" src="{{ url('/img/admin/show.svg') }}" alt="">
+{{--                        <img class="show-pass" src="{{ url('/img/admin/show.svg') }}" alt="">--}}
                         <span class="validate"></span>
                     </label>
                 </div>
@@ -54,7 +54,7 @@
                     </label>
                     <label class="label-password" for="password">
                         <input name="password" type="password" id="password" placeholder="Пароль">
-                        <img class="show-pass" src="{{ url('/img/admin/show.svg') }}" alt="">
+{{--                        <img class="show-pass" src="{{ url('/img/admin/show.svg') }}" alt="">--}}
                         <span class="validate"></span>
                     </label>
                 </div>

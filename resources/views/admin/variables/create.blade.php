@@ -40,3 +40,7 @@
         @include('admin.variables.includes.create_form')
     </form>
 @endsection
+
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection

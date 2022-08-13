@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
 
 class ImageRepository
@@ -80,7 +81,7 @@ class ImageRepository
                                 $constraint->aspectRatio();
                             })
                             ->save(public_path("uploads/{$path}/") . '/480/' . $image_name . '.webp');
-
+                        
                         break;
                 }
             }

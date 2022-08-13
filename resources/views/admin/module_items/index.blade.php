@@ -140,4 +140,7 @@ $attributes = $module->attrs->mapWithKeys(function ($attr) {
     <script src="{{ asset('/js/comment/list.js') }}"></script>
 @endsection
 @endif
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection
 

@@ -35,3 +35,7 @@
         @include('admin.language.includes.create_update_form')
     </form>
 @endsection
+
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection

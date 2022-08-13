@@ -29,6 +29,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Forum\TopicController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GalleryItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +133,22 @@ Route::group([
         Route::delete('delete/{variable}', [VariableController::class, 'destroy'])->name('variables.delete');
     });
 
+    Route::prefix('galleries')->group(function () {
+        Route::get('', [GalleryController::class, 'index'])->name('galleries.list');
+        Route::get('create', [GalleryController::class, 'create'])->name('galleries.create');
+        Route::post('create', [GalleryController::class, 'store'])->name('galleries.store');
+        Route::get('edit/{gallery}', [GalleryController::class, 'edit'])->name('galleries.edit');
+        Route::post('update/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
+        Route::delete('delete/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.delete');
+        Route::prefix('items')->group(function () {
+            Route::get('list/{gallery}', [GalleryItemController::class, 'index'])->name('galleries.items.list');
+            Route::post('create/{gallery}', [GalleryItemController::class, 'store'])->name('galleries.items.store');
+            Route::get('update/{module_item}', [GalleryItemController::class, 'edit'])->name('galleries.items.update');
+            Route::post('update/{module_item}', [GalleryItemController::class, 'update'])->name('galleries.items.update');
+            Route::delete('delete/{module_item}', [GalleryItemController::class, 'destroy'])->name('galleries.items.delete');
+        });
+    });
+
     Route::prefix('contacts')->group(function () {
         Route::get('', [ContactController::class, 'index'])->name('contacts.list');
         Route::get('create', [ContactController::class, 'create'])->name('contacts.create');
@@ -142,12 +160,10 @@ Route::group([
 
     Route::prefix('menu')->group(function () {
 //        Route::get('', [MenuController::class, 'index'])->name('menu.list');
+//        Route::post('save', [MenuController::class, 'store'])->name('menu.save');
+//        Route::post('reorder', [MenuController::class, 'updateOrder'])->name('menu.order.update');
 
-        Route::post('save', [MenuController::class, 'store'])->name('menu.save');
-        Route::post('reorder', [MenuController::class, 'updateOrder'])->name('menu.order.update');
-
-
-        Route::post('create-menu',[menuController::class,'store2']);
+        Route::post('create-menu',[menuController::class,'store']);
         Route::get('add-categories-to-menu',[menuController::class,'addCatToMenu']);
         Route::get('add-post-to-menu',[menuController::class,'addPostToMenu']);
         Route::get('add-custom-link',[menuController::class,'addCustomLink']);
@@ -155,7 +171,7 @@ Route::group([
         Route::post('update-menuitem/{id}',[menuController::class,'updateMenuItem']);
         Route::get('delete-menuitem/{id}/{key}/{in?}',[menuController::class,'deleteMenuItem']);
         Route::get('delete-menu/{id}',[menuController::class,'destroy']);
-        Route::get('{id?}',[MenuController::class,'index2'])->name('menu.list');
+        Route::get('{id?}',[MenuController::class,'index'])->name('menu.list');
     });
 
     Route::prefix('modules')->group(function () {

@@ -56,6 +56,8 @@
                                 @else
                                     {{ $module->name }}
                                 @endif
+                                <br>
+                                {{$module->value}}
                             </td>
                             <td>
                                 @include('admin.modules.includes.attributes_index_list', [$model = $module])
@@ -66,13 +68,15 @@
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="{{ route('admin.modules.items.list', ['module' => $module]) }}" style="margin: 0 3px" class="btn btn-primary"><i class="far fa-list-alt"></i></a>
-                                    <form method="POST" action="{{ route('admin.modules.delete', [ 'module'=> $module ]) }}">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Вы уверены?')">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </form>
+                                    @if(!$module->not_del)
+                                        <form method="POST" action="{{ route('admin.modules.delete', [ 'module'=> $module ]) }}">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Вы уверены?')">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -90,3 +94,6 @@
     </div>
 @endsection
 
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection

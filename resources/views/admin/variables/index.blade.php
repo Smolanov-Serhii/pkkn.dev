@@ -55,23 +55,23 @@
                                         <img src="/uploads/variables/{{ $var->translate->value }}" alt="">
                                     @else
                                         @foreach($var->translations as $translation)
-                                            @if($translation->lang_id == 2)
-                                                    {{$translation->value}}
-{{--                                                {{ optional($var->translate)->value }}--}}
+                                            @if($translation->lang_id == \App\Models\Language::where('iso', config('app.fallback_locale'))->first()->id)
+                                                {{$translation->value}}
                                             @endif
                                         @endforeach
-
                                     @endif
                                 </td>
                                 <td style="white-space: nowrap;">
                                     <a href="{{ route('admin.variables.edit', ['variable' => $var]) }}" class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                    <form class="btn btn-danger btn-icon" method="POST" action="{{ route('admin.variables.delete', [ 'variable'=> $var ]) }}">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Are you sure?')" style="padding:0;">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </form>
+                                    @if(!$var->not_del)
+                                        <form class="btn btn-danger btn-icon" method="POST" action="{{ route('admin.variables.delete', [ 'variable'=> $var ]) }}">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Are you sure?')" style="padding:0;">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
 
                             </tr>
@@ -93,4 +93,8 @@
 @endsection
 @section('adminlte_js')
 
+@endsection
+
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection

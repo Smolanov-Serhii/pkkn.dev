@@ -47,3 +47,6 @@
 {{--    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>--}}
     <script src="{{ asset('/js/modules/form.js') }}"></script>
 @endsection
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection

@@ -94,4 +94,6 @@ use App\Models\Language;
     <script src="{{ asset('/js/language/list.js') }}"></script>
 @endsection
 
-
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection

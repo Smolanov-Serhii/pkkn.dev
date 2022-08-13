@@ -50,7 +50,7 @@ return [
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'CSFM',
+    'logo_img_alt' => 'pkkn',
 
     /*
     |--------------------------------------------------------------------------
@@ -236,127 +236,65 @@ return [
         ],
         ['header' => 'ЗАПИСИ'],
         [
-            'text'        => 'Блог',
-//            'url'         => 'admin/modules',
+            'text'        => 'Новости',
             'icon'        => '/img/admin/blog.svg',
-//            'label'       => 3,
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Список Записей ',
-                    'url'  => '/admin/modules/items/list/36',
+                    'text' => 'Список новостей ',
+                    'url'  => '/admin/modules/items/list/43',
                 ],
                 [
-                    'text' => 'Рубрики записей',
+                    'text' => 'Рубрики новостей',
                     'url'  => '/admin/taxonomy/items/list/16',
                 ],
             ],
         ],
         [
-            'text'        => 'Трансляции',
-//            'url'         => 'admin/modules',
-            'icon'        => '/img/admin/video.svg',
-//            'label'       => 3,
+            'text'        => 'Сервисы',
+            'icon'        => '/img/admin/blog.svg',
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Список трансляций ',
-                    'url'  => '/admin/modules/items/list/33',
+                    'text' => 'Список сервисов ',
+                    'url'  => '/admin/modules/items/list/40',
                 ],
                 [
-                    'text' => 'Тип трансляции',
-                    'url'  => '/admin/taxonomy/items/list/14',
+                    'text' => 'Рубрики сервисов',
+                    'url'  => '/admin/taxonomy/items/list/16',
                 ],
             ],
-
         ],
         [
-            'text'        => 'Тренировки',
-//            'url'         => 'admin/modules',
-            'icon'        => '/img/admin/trenings.svg',
-//            'label'       => 3,
+            'text'        => 'Продукция',
+            'icon'        => '/img/admin/blog.svg',
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Список тренировок ',
-                    'url'  => '/admin/modules/items/list/31',
+                    'text' => 'Список продукции ',
+                    'url'  => '/admin/modules/items/list/41',
                 ],
                 [
-                    'text' => 'Группы тренировок',
-                    'url'  => '/admin/taxonomy/items/list/13',
+                    'text' => 'Рубрики продукции',
+                    'url'  => '/admin/taxonomy/items/list/16',
                 ],
             ],
-
         ],
         [
-            'text'        => 'Тренера',
-//            'url'         => 'admin/modules',
-            'icon'        => '/img/admin/treners.svg',
-//            'label'       => 3,
+            'text'        => 'Работы',
+            'icon'        => '/img/admin/blog.svg',
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Список тренеров',
-                    'url'  => '/admin/modules/items/list/35',
+                    'text' => 'Список работ ',
+                    'url'  => '/admin/modules/items/list/42',
                 ],
                 [
-                    'text' => 'Группы тренеров',
-                    'url'  => '/admin/taxonomy/items/list/15',
+                    'text' => 'Рубрики работ',
+                    'url'  => '/admin/taxonomy/items/list/16',
                 ],
             ],
-
         ],
-        [
-            'text'        => 'Клиенты',
-//            'url'         => 'admin/modules',
-            'icon'        => '/img/admin/clients.svg',
-//            'label'       => 3,
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Список клиентов ',
-                    'url'  => '/admin/modules/items/list/32',
-                ],
-                [
-                    'text' => 'Отзывы ',
-                    'url'  => '/admin/modules/items/list/34',
-                ],
-                [
-                    'text' => 'Комментарии ',
-                    'url'  => '/admin/comment',
-                ],
-            ],
-
-        ],
-        [
-            'text'        => 'Подписки',
-//            'url'         => 'admin/modules',
-            'icon'        => '/img/admin/subscribe.svg',
-//            'label'       => 3,
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Виды подписок',
-                    'url'  => '/admin/modules/items/list/37',
-                ],
-            ],
-
-        ],
-        [
-            'text'        => 'FAQ',
-//            'url'         => 'admin/modules',
-            'icon'        => '/img/admin/faq.svg',
-//            'label'       => 3,
-            'label_color' => 'success',
-            'submenu' => [
-                [
-                    'text' => 'Записи',
-                    'url'  => '/admin/modules/items/list/38',
-                ],
-            ],
-
-        ],
-
         ['header' => 'СТРУКТУРА'],
         [
             'text'        => 'Доступы',
@@ -429,13 +367,13 @@ return [
 //            'label'       => 3,
             'label_color' => 'success',
         ],
-        [
-            'text'        => 'Виджеты',
-            'url'         => 'admin/widget',
-            'icon'        => 'fa fa-bars',
-//            'label'       => 3,
-            'label_color' => 'success',
-        ],
+//        [
+//            'text'        => 'Виджеты',
+//            'url'         => 'admin/widget',
+//            'icon'        => 'fa fa-bars',
+////            'label'       => 3,
+//            'label_color' => 'success',
+//        ],
         [
             'text'        => 'Рассылка',
             'url'         => '/admin/modules/items/list/39',
@@ -443,14 +381,21 @@ return [
 //            'label'       => 3,
             'label_color' => 'success',
         ],
+//        [
+//            'text'        => 'Галереи',
+//            'url'         => '/admin/galleries',
+//            'icon'        => 'fa fa-bars',
+////            'label'       => 3,
+//            'label_color' => 'success',
+//        ],
         ['header' => 'ПАРАМЕТРЫ'],
-        [
-            'text'        => 'languages',
-            'url'         => 'admin/language',
-            'icon'        => 'fa fa-globe',
-//            'label'       => 3,
-            'label_color' => 'success',
-        ],
+//        [
+//            'text'        => 'languages',
+//            'url'         => 'admin/language',
+//            'icon'        => 'fa fa-globe',
+////            'label'       => 3,
+//            'label_color' => 'success',
+//        ],
         [
             'text'        => 'Настройки',
             'url'         => 'admin/variables',
@@ -458,13 +403,13 @@ return [
 //            'label'       => 3,
             'label_color' => 'success',
         ],
-        [
-            'text'        => 'Контакты',
-            'url'         => 'admin/contacts',
-            'icon'        => 'fas fa-cog',
-//            'label'       => 3,
-            'label_color' => 'success',
-        ],
+//        [
+//            'text'        => 'Контакты',
+//            'url'         => 'admin/contacts',
+//            'icon'        => 'fas fa-cog',
+////            'label'       => 3,
+//            'label_color' => 'success',
+//        ],
 
 //        ['header' => 'account_settings'],
 //        [

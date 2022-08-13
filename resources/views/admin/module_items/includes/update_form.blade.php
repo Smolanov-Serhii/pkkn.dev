@@ -150,11 +150,11 @@ $block_templates = $module_item->module->group->templates;
                             <label for="key"> {{ $attribute->name }} </label>
                             <input
                                     name="attributes[{{ $attribute->id }}]"
-                                    type="text"
+                                    type="time"
                                     class="form-control"
                                     id="name"
                                     placeholder="{{ $attribute->type }}"
-                                    value="{{ $module_item_props_mapped_by_attr[$attribute->id]->value ?? 'NEW' }}"
+                                    value="{{ $module_item_props_mapped_by_attr[$attribute->id]->value ?? '' }}"
                             >
 
                             @break
@@ -184,6 +184,21 @@ $block_templates = $module_item->module->group->templates;
                                     </button>
                                 @endif
                             </div>
+                            @break
+                            @case(7)
+                                <label for=""> {{ $attribute->name }} </label>
+                                <input
+                                        name="attributes[{{ $attribute->id }}]"
+                                        type="date"
+                                        class="form-control"
+                                        id="name"
+                                        placeholder="{{ $attribute->type }}"
+                                        value="{{ $module_item_props_mapped_by_attr[$attribute->id]->value ?? '' }}"
+                                >
+                            @break
+                            @case(8)
+                                <label for=""> {{ $attribute->name }} </label>
+                                <select name="" id=""></select>
                             @break
                         @endswitch
                     </div>

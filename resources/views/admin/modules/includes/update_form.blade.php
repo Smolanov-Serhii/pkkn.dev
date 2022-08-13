@@ -19,6 +19,17 @@
         >
     </div>
     <div class="form-group">
+        <label for="key"> @lang('modules.value') </label>
+        <input
+                name="value"
+                type="text"
+                class="form-control"
+                id="value"
+                placeholder="@lang('modules.value')"
+                value="{{ $module->value ?? old('name') }}"
+        >
+    </div>
+    <div class="form-group">
         <label for="type_selector_{{ $module->id }}"> @lang('block_option_contents.add_value') </code></label>
         <select
                 class="custom-select form-control-border type-selector"

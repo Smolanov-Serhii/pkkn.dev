@@ -50,7 +50,8 @@ class Variable extends Model
         'key',
         'name',
         'type',
-        'section'
+        'section',
+        'not_del',
     ];
 
     // PROPERTIES ATTRIBUTES
@@ -65,7 +66,6 @@ class Variable extends Model
     }
 
     public function translate() {
-
         return $this
             ->hasOne(VariableTranslation::class, 'variable_id', 'id')
             ->current();
@@ -75,12 +75,8 @@ class Variable extends Model
         'image',
         'input',
         'textarea',
-        'editor'
+        'editor',
+        'checkbox',
     ];
 
-//    public function translate() {
-//        return $this
-//            ->hasOne(Variable_translations::class,'variable_id', 'id')
-//            ->current();
-//    }
 }

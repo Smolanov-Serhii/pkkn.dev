@@ -76,3 +76,6 @@
     </div>
 @endsection
 
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection

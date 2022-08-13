@@ -1,0 +1,70 @@
+.activity{
+  padding-top: 90px;
+  margin-bottom: 100px;
+  &__design{
+    &-left{
+      position: absolute;
+      top: 55px;
+      left: -100px;
+    }
+    &-right{
+      position: absolute;
+      bottom: -20px;
+      right: -25px;
+    }
+  }
+  &__container{
+    position: relative;
+  }
+  &__title{
+    margin-bottom: 10px;
+  }
+  &__subtitle{
+
+  }
+  &__list{
+    margin-top: 46px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__item{
+    background: #FFFFFF;
+    box-shadow: 0px 5px 50px rgba(19, 28, 66, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: calc(33.3333% - 13px);
+    padding: 64px 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    &-img{
+      width: 72px;
+      height: 72px;
+      margin-right: 48px;
+      font-size: 10px;
+    }
+    &-desc{
+      width: calc(100% - 120px);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 169.02%;
+      color: #131C42;
+      margin-bottom: 0;
+    }
+    a{
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 169.02%;
+      color: #ABB2D0;
+      text-decoration: none;
+      svg{
+        margin-left: 10px;
+      }
+    }
+  }
+}

@@ -57,7 +57,6 @@ class VariableController extends Controller
                 $value = end($path_ar);
             }
 
-
             $var->translations()->create([
                 'lang_id' => Cache::get('languages')->get($iso),
                 'value' => $value,
@@ -94,6 +93,12 @@ class VariableController extends Controller
 
         $variable->update($data);
 
+        if ($data['type'] == 4 && is_null($data['value'])) {
+            foreach(Language::enabled()->get() as $language) {
+                $data["value"][$language->iso] = 0;
+            }
+        }
+
         foreach ($data['value'] as $iso => $value) {
             if ($value && $data['type'] == 0) {
                 $imageURL = $value->store('variables');
@@ -101,7 +106,7 @@ class VariableController extends Controller
                 $value = end($path_ar);
             }
 
-            if ($value) {
+            if ($value || ($data['type'] == 4)) {
                 $translation = $variable
                     ->translations()
                     ->where('lang_id', Cache::get('languages')->get($iso))

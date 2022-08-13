@@ -113,6 +113,22 @@
             </div>
             @break
 
+            @case(7)
+                <label for=""> {{ $attribute->name }} </label>
+                <input
+                        name="item[{{ $attribute->id }}]"
+                        type="date"
+                        class="form-control"
+                        placeholder="{{ $attribute->type }}"
+                        value=""
+                        required
+                >
+            @break
+            @case(8)
+                <label for=""> {{ $attribute->name }} </label>
+                <select name="" id=""></select>
+            @break
+
         @endswitch
     </div>
 @endforeach

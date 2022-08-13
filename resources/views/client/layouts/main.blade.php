@@ -19,7 +19,7 @@
 {{--end header section--}}
 
 <main class="main" id="main">
-    <article>
+
     {{--content section--}}
         @if($page->seo->alias == "user-login" || $page->seo->alias == "user-register" || $page->seo->alias == "404" || $page->seo->alias == "cabinet")
 
@@ -28,7 +28,7 @@
         @endif
     @yield('content')
     {{--end content section--}}
-    </article>
+
 </main>
 
 {{--modal section--}}
@@ -47,6 +47,38 @@
 
 @endif
 
+@section('client_scripts')
+{{--    <script>--}}
+{{--        $('document').ready(function() {--}}
+{{--            $('.form-template-send button').click(function(e) {--}}
+{{--                e.preventDefault();--}}
+{{--                var data = {};--}}
+{{--                $('.form-template-send').find('input').each(function(){--}}
+{{--                    var input = $(this);--}}
+{{--                    data[input.attr('name')] = input.val();--}}
+{{--                });--}}
+
+{{--                $.ajaxSetup({--}}
+{{--                    headers: {--}}
+{{--                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                    }--}}
+{{--                });--}}
+{{--                $.ajax({--}}
+{{--                    method: "POST",--}}
+{{--                    url: '{{route('client.mail.sendToForm')}}',--}}
+{{--                    data: data,--}}
+{{--                    success: function (data) {--}}
+{{--                        $('.fancybox-container').remove();--}}
+{{--                    },--}}
+{{--                    error: function (data) {--}}
+{{--                        console.log('Error', data);--}}
+{{--                    },--}}
+{{--                    dataType: 'json'--}}
+{{--                })--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+@endsection
 @yield('client_scripts')
 
 {{--end footer section--}}

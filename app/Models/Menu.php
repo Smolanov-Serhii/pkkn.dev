@@ -49,6 +49,7 @@ class Menu extends Model
         'order',
         'section',
         'title',
+        'name',
         'location',
         'content',
     ];
