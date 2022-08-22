@@ -3,7 +3,7 @@ $contents = $block->mappedByKey();
 ?>
 <section class="map">
     <div class="map__container">
-        <div class="map__map" id="map" data-icon="{{  url('/') . '/uploads/contents/' . $contents['marker']['value'] }}">
+        <div class="map__map" id="map" data-icon="{{  url('/img/templates/map/marker.svg') }}">
 
         </div>
         <div class="offer__form map__form">
@@ -42,7 +42,7 @@ $contents = $block->mappedByKey();
                         <button type="submit" name="send" class="btn disabled darkblue-button" disabled="">
                             <span>Отправить запрос</span></button>
                     </div>
-                    <p class="agree">Заполняя форму, вы соглашаетесь на обработку персональных данных (ст.9 ФЗ от 27.07.2006 №152-ФЗ «О персональных данных»)</p>
+                    <p class="agree">{{ $var['agry'] }}</p>
                 </form>
             </div>
         </div>

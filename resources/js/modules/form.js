@@ -12,7 +12,7 @@ $(document).ready(function() {
 })
 
 
-$(document).on('click', '.add-iteration', function (e) {
+$(document).on('click', '.add-iteration-module', function (e) {
 
     $.ajax({
         method: 'get',

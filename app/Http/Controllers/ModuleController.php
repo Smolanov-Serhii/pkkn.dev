@@ -144,11 +144,18 @@ class ModuleController extends Controller
 
         if (isset($data['repeaters'])) {
             foreach ($data['repeaters'] as $id => $repeater) {
+                $parent_id = $repeater['parent_id'];
                 $repeater = $models[$repeater['parent_id']]->repeaters()->create([
                     'name' => $repeater['name'],
                     'key' => $repeater['key'],
                 ]);
+
                 $models = Arr::add($models, $id, $repeater);
+
+                foreach ($models[$parent_id]->items as $item) {
+                    $iteration_model = $item->iterable()
+                        ->create(['module_repeater_id' => $repeater->id]);
+                }
             }
         }
 

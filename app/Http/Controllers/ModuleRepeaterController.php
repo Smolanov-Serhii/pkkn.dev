@@ -33,7 +33,7 @@ class ModuleRepeaterController extends Controller
         return response()->json([
             'status' => true,
             'html' => view(
-                'admin.module_items.includes.repeater',
+                'admin.module_items.includes.repeater-item',
                 compact('moduleRepeater', 'module', 'iteration_id', 'parent')
             )->render(),
         ]);

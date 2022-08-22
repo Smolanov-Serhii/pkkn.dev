@@ -205,7 +205,7 @@ $block_templates = $module_item->module->group->templates;
                 @endforeach
 
                 @if($module_item->iterations->count())
-                    @include('admin.module_items.includes.iterations', ['iterations' => $module_item->iterations])
+                    @include('admin.module_items.includes.iteration_groups', ['iterations' => $module_item->iterations->groupBy('module_repeater_id')])
                 @else
                     @include('admin.module_items.includes.repeaters', ['repeaters' => $module_item->module->repeaters])
                 @endif
@@ -348,4 +348,6 @@ $block_templates = $module_item->module->group->templates;
 
 @section('adminlte_css')
     <link href="{{ asset('/css/summernote.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 @endsection
+

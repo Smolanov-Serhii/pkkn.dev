@@ -49,11 +49,6 @@ use Illuminate\Support\ViewErrorBag;
         @include('admin.pages.includes.create_update_form')
     </form>
 @endsection
-
 @section('adminlte_css')
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-@endsection
-
-@section('adminlte_js')
-{{--    <script src="{{ asset('/js/jquery-ui.js') }}"></script>--}}
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 @endsection

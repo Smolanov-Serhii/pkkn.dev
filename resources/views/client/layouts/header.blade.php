@@ -5,9 +5,9 @@
         </a>
         <div class="header__wrapper">
             <div class="header__contacts">
-                <a class="header__contacts-item" href="#"><img src="{{ url('/img/header/phone.svg') }}" alt="phone">+7 495 662 50 01</a>
-                <a class="header__contacts-item" href="#"><img src="{{ url('/img/header/mail.svg') }}" alt="mail">info@konceptnavi.ru</a>
-                <div class="header__contacts-item"><img src="{{ url('/img/header/location.svg') }}" alt="location">г.Москва, ул. Марьиной Рощи, д. 2А</div>
+                <a class="header__contacts-item" href="tel:{{ $var['phone'] }}"><img src="{{ url('/img/header/phone.svg') }}" alt="phone">{{ $var['phone'] }}</a>
+                <a class="header__contacts-item" href="mailto:{{ $var['e-mail'] }}"><img src="{{ url('/img/header/mail.svg') }}" alt="mail">{{ $var['e-mail'] }}</a>
+                <div class="header__contacts-item"><img src="{{ url('/img/header/location.svg') }}" alt="location">{{ $var['adres'] }}</div>
             </div>
             <nav class="header__nav">
                 <ul class="header__list">
@@ -21,8 +21,8 @@
                                                     @if(!is_null($data->img))
                                                         <img width="40" src="{{url('/uploads/menu_items/'.$data->img)}}" alt="">
                                                     @endif
-                                                    <li class="header__item @if(!is_null($data->class) && !empty($data->class)) {{$data->class}} @endif">
-                                                        <a class="header__lnk" href="{{local_url($data->slug)}}">{{$data->title}}</a>
+                                                    <li class="header__item @if(!is_null($data->class) && !empty($data->class)) {{$data->class}} @endif ">
+                                                        <a class="header__lnk @if($item->slug == $page->seo->alias) current-page @endif" href="{{local_url($data->slug)}}">{{$data->title}}</a>
                                                     </li>
                                                 @endforeach
                                             @endforeach
@@ -31,7 +31,7 @@
 
                                 @else
                                     <li class="header__item">
-                                        <a href="{{local_url($item->slug)}}" class="header__lnk" > {!! $item->title !!}</a>
+                                        <a href="{{local_url($item->slug)}}" class="header__lnk @if($item->slug == $page->seo->alias) current-page @endif" > {!! $item->title !!}</a>
                                     </li>
                                 @endif
                             @endforeach

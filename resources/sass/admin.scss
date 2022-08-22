@@ -364,6 +364,17 @@ th.clicked{
         transform: scale(1, -1);
     }
 }
+.nav-sidebar {
+    .nav-item{
+        > .nav-link{
+            i{
+                width: 17px;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
 //.nav-sidebar {
 //    .nav-item{
 //        > .nav-link{

@@ -64,3 +64,6 @@
     @parent('adminlte_js')
     <script src="{{ asset('/js/comment/list.js') }}"></script>
 @endsection
+@section('adminlte_css')
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+@endsection

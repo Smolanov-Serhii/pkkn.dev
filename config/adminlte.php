@@ -354,6 +354,13 @@ return [
             ]
         ],
         [
+            'text'        => 'Галереи',
+            'url'         => '/admin/galleries',
+            'icon'        => 'fa fa-solid fa-images',
+//            'label'       => 3,
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',

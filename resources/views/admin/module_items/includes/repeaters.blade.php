@@ -4,7 +4,6 @@
     @endphp
     @include('admin.module_items.includes.repeater')
 
-{{--    @dd($module_repeater)--}}
     <button
         type="button"
         class="btn btn-danger btn-icon add-iteration"

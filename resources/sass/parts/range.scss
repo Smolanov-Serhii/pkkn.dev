@@ -10,6 +10,11 @@
       z-index: -1;
     }
   }
+  &__title{
+    max-width: 926px;
+    margin-right: auto;
+    margin-left: auto;
+  }
   &__tabs{
     display: flex;
     align-items: center;

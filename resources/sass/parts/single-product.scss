@@ -1,0 +1,58 @@
+.single-product{
+  margin-bottom: 85px;
+  .mySwiper{
+    margin-top: 20px;
+  }
+  &__container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__slider{
+    width: calc(50% - 60px);
+    margin-right: 60px;
+    .swiper-slide{
+      opacity: 0.5;
+      img{
+        width: 100%;
+        height: auto;
+      }
+      &-active{
+        opacity: 1;
+      }
+    }
+      &-thumb{
+        opacity: 0.6;
+        &-active{
+          opacity: 1;
+        }
+    }
+  }
+  &__content{
+    width: 50%;
+    span, p, li{
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 120%;
+      color: #131C42;
+    }
+  }
+  &__form{
+    cursor: pointer;
+    transition: $transition;
+    margin-bottom: 64px;
+    span{
+      color: white;
+    }
+    &:hover{
+      background-color: #0047ACFF;
+    }
+  }
+  &__title{
+    text-align: left;
+    margin-bottom: 19px;
+  }
+  &__subtitle{
+    text-align: left;
+    margin-bottom: 30px;
+  }
+}

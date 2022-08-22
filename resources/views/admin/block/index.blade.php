@@ -70,6 +70,7 @@
 {{--    <script src="https://martinezdelizarrondo.com/ckplugins/simpleuploads.demo4/ckeditor.js"></script>--}}
 {{--    <script src="{{ asset('/js/ckeditor.js') }}"></script>--}}
     <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('/js/list.js') }}"></script>
 {{--    <script src="{{ asset('/js/form.js') }}"></script>--}}
 @endsection

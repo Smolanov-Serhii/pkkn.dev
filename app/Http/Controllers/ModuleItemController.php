@@ -13,6 +13,7 @@ use App\Models\ModuleItemProperty;
 use App\Models\ModuleRepeaterIteration;
 use App\Models\Page;
 use App\Models\TaxonomyItem;
+use App\Models\User;
 use App\Repositories\ModuleItemsRepository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -474,18 +475,14 @@ class ModuleItemController extends Controller
                 foreach ($iterations as $repeater_id => $iterations_data) {
                     foreach ($iterations_data as $iteration_id => $iteration_attributes_data) {
                         $parent_model = $parent == 'Module_items' ? $module_item : $iteration_models[$parent];
+                        $iteration_model = $parent_model
+                            ->iterable()
+                            ->create(['module_repeater_id' => $repeater_id]);
 
-                        $iteration_model = ModuleRepeaterIteration::create(
-                            [
-//                                'model' => class_basename($parent_model),
-//                                'model_id' => $parent_model->id,
-                                'module_repeater_id' => $repeater_id,
-                            ]);
                         $iteration_models = Arr::add($iteration_models, $iteration_id, $iteration_model);
 
                         foreach ($iteration_attributes_data as $attribute_id => $value) {
                             $prop = $iteration_model->props()->create([
-//                                'model' => class_basename($iteration_model),
                                 'module_attribute_id' => $attribute_id,
                                 'value' => $value,
                             ]);
@@ -494,8 +491,7 @@ class ModuleItemController extends Controller
                 }
             }
         }
-//
-//        dd($data);
+        
         if (isset($data['attributes'])) {
             foreach ($data['attributes'] as $attr_id => $value) {
                 $prop = $module_item_props_mapped_by_attr_id[$attr_id] ?? null;
@@ -664,9 +660,16 @@ class ModuleItemController extends Controller
      */
     public function destroy(ModuleItem $module_item)
     {
+        $module_id = $module_item->id;
+        $module_name = $module_item->module->name;
         if ($module_item->delete()) {
             return redirect()->route('admin.modules.items.list', ['module' => $module_item->module]);
         }
+
+        if ($module_name == 'clients') {
+            User::where('module_item_id', $module_id)->delete();
+        }
+        
         return back();
     }
 }

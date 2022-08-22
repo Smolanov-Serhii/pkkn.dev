@@ -42,3 +42,6 @@
         @include('admin.role.includes.create_update_form')
     </form>
 @endsection
+@section('adminlte_css')
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+@endsection

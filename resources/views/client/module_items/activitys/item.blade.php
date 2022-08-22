@@ -7,7 +7,8 @@
 $properties = $module_item->props->mapWithKeys(function ($prop) {
     return [$prop->type->key => $prop->value];
 });
-//$taxonomies = $module_item->module->taxonomies;
+
+$items = $module_item->blocks;
 ?>
 
 
@@ -24,20 +25,12 @@ $properties = $module_item->props->mapWithKeys(function ($prop) {
                 </ul>
             </div>
         </div>
-        <section class="blog-sin">
-            <div class="blog-sin__container main-container">
-                <div class="blog-sin__wrapper">
-                    <div class="blog-sin__image">
-{{--                        <img src="{{  url('/') . '/uploads/module_items/' . $properties['image'] }}" alt="{{ $properties['title'] }}">--}}
-                    </div>
-                    <div class="blog-sin__content">
-                        <div class="blog-sin__header">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @foreach($items as $block)
+            @if($block->enabled)
+                <?php $view = explode('.', $block->template->path)[0]; ?>
+                @includeIf('client.block_templates.templates.'.$view)
+            @endif
+        @endforeach
 @endsection
 @section('client_scripts')
     @parent('client_scripts')

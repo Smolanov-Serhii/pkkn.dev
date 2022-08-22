@@ -84,4 +84,6 @@
         <!-- /.card-footer -->
     </div>
 @endsection
-
+@section('adminlte_css')
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+@endsection

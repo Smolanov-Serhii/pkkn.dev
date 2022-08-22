@@ -41,5 +41,5 @@
     </form>
 @endsection
 @section('adminlte_css')
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 @endsection

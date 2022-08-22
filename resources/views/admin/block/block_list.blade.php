@@ -14,7 +14,3 @@
         @include('admin.block.block_item')
     @endforeach
 </div>
-
-@section('adminlte_css')
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-@endsection

@@ -31,6 +31,9 @@ use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GalleryItemController;
+use App\Http\Controllers\CabinetController;
+use App\Http\Controllers\TableController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,11 +144,12 @@ Route::group([
         Route::post('update/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
         Route::delete('delete/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.delete');
         Route::prefix('items')->group(function () {
+            Route::post('sort', [GalleryItemController::class, 'sort'])->name('galleries.items.sort');
             Route::get('list/{gallery}', [GalleryItemController::class, 'index'])->name('galleries.items.list');
             Route::post('create/{gallery}', [GalleryItemController::class, 'store'])->name('galleries.items.store');
-            Route::get('update/{module_item}', [GalleryItemController::class, 'edit'])->name('galleries.items.update');
-            Route::post('update/{module_item}', [GalleryItemController::class, 'update'])->name('galleries.items.update');
-            Route::delete('delete/{module_item}', [GalleryItemController::class, 'destroy'])->name('galleries.items.delete');
+            Route::get('update/{gallery_item}', [GalleryItemController::class, 'edit'])->name('galleries.items.update');
+            Route::post('update/{gallery_item}', [GalleryItemController::class, 'update'])->name('galleries.items.update');
+            Route::delete('delete/{gallery_item}', [GalleryItemController::class, 'destroy'])->name('galleries.items.delete');
         });
     });
 
@@ -265,9 +269,24 @@ Route::group([
         Route::post('store', [LetterController::class, 'store'])->name('letter.store');
     });
 
+    Route::post('add-trening', [CabinetController::class, 'addTrening'])->name('add.trening');
+    Route::post('delete-trening', [CabinetController::class, 'deleteTrening'])->name('delete.trening');
+
     Route::post('sync', [ModuleItemController::class, 'syncModuleItem'])->name('module.item.sync');
 
     Route::post('reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+
+    Route::post('table/show', [TableController::class, 'show'])->name('table.show');
+
+    Route::get('favorite/trenings', [CabinetController::class, 'getFavorites'])->name('get.favorites');
+    Route::get('added/trenings', [CabinetController::class, 'addedTrenings'])->name('added.trenings');
+    Route::get('delete/added/trenings', [CabinetController::class, 'deleteAddedTrenings'])->name('delete.added.trenings');
+    Route::get('all/trenings', [CabinetController::class, 'allTrenings'])->name('all.trenings');
+    Route::get('get/added/trenings', [CabinetController::class, 'getAddedTrenings'])->name('get.added.trenings');
+
+    Route::get('get-by-day/trenings', [CabinetController::class, 'getByDayTrenings'])->name('get.byday.trenings');
+
+    Route::post('quiz/store', [QuizController::class, 'store'])->name('quiz.store');
 
 //    Route::prefix('programs')->group(function () {
 ////    Route::get('', [App\Http\Controllers\MouduleItemController::class, 'show'])->name('client.programs.items.list');

@@ -135,6 +135,7 @@ img{
   text-decoration: none;
   border: 1px solid #131C42;
   transition: $transition;
+  cursor: pointer;
   span{
     font-weight: 500;
     font-size: 20px;
@@ -161,5 +162,8 @@ img{
 @import "parts/works";
 @import "parts/news";
 @import "parts/map";
+@import "parts/img-to-text";
+@import "parts/icon-l";
+@import "parts/single-product";
 
 @import "parts/footer";

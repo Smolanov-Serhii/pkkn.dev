@@ -72,7 +72,7 @@ $attributes = $module->attrs->mapWithKeys(function ($attr) {
 {{--                                @dd($item->addition)--}}
 {{--                                @dd($item->seo)--}}
 {{--                                @dd($item)--}}
-                                {{ $item->addition->title }}
+                                {{ $item->addition->title ?? ''}}
 {{--                                @switch($item->module->name)--}}
 {{--                                    @case('programs')--}}
 {{--                                    {{ $item->props()->where('module_attribute_id', $attributes['title'])->first()->value }}--}}
@@ -141,6 +141,6 @@ $attributes = $module->attrs->mapWithKeys(function ($attr) {
 @endsection
 @endif
 @section('adminlte_css')
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 @endsection
 

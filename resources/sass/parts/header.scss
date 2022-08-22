@@ -76,9 +76,28 @@
     display: inline-block;
     padding: 15px 30px;
     transition: $transition;
-    &.current-page, &:hover{
+    border-bottom: 2px solid transparent;
+    &.current-page{
       background-color: #0074FF;
       color: #FFFFFF;
+    }
+    &:hover{
+      position: relative;
+      border-bottom: 2px solid #0074FF;
+      color: #0074FF;
+      &:before{
+        content: "";
+        display: block;
+        bottom: -2px;
+        left: calc(50% - 10px);
+        position: absolute;
+        width: 20px;
+        height: 8px;
+        background-image: url('/../img/templates/range/arrow.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+      }
     }
   }
   &__contacts{
