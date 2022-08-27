@@ -1,0 +1,49 @@
+.production{
+  margin-bottom: 109px;
+  margin-top: 90px;
+  &__container{
+
+  }
+  &__slider{
+    position: relative;
+  }
+  &__title{
+
+  }
+  &__subtitle{
+    text-align: left;
+    margin-bottom: 45px;
+  }
+  &__navigation{
+    width: calc(100% + 376px);
+    left: -188px;
+    position: absolute;
+    top: calc(50% - 34px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-next, &-prev{
+      width: 68px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #ABB2D0;
+      cursor: pointer;
+      transition: $transition;
+      svg{
+        path{
+          transition: $transition;
+        }
+      }
+      &:hover{
+        border: 2px solid #000000;
+        svg{
+          path{
+            fill: #000000;
+          }
+        }
+      }
+    }
+  }
+}

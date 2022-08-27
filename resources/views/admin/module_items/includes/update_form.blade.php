@@ -350,4 +350,3 @@ $block_templates = $module_item->module->group->templates;
     <link href="{{ asset('/css/summernote.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 @endsection
-

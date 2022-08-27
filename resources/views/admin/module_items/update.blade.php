@@ -43,14 +43,14 @@
     </form>
 @endsection
 
-@section('adminlte_css')
-{{--    <link href="https://cdn.quilljs.com/1.2.6/quill.snow.css" rel="stylesheet">--}}
-    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
-@endsection
+
 
 
 @section('adminlte_js')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {{--    <script src="https://cdn.quilljs.com/1.2.6/quill.min.js"></script>--}}
     <script src="{{ asset('/js/modules/form.js') }}"></script>
+@endsection
+@section('adminlte_css')
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 @endsection

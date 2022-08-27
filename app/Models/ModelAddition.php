@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Page;
 
 /**
  * App\Models\ModelAddition
@@ -57,12 +58,9 @@ class ModelAddition extends Model
         'lang_id',
     ];
 
-    /**
-     * @return HasOne
-     */
-    public function owner(): HasOne
+    public function owner()
     {
         return $this
-            ->hasOne($this->model, 'id', 'model_id');
+            ->belongsTo($this->additable_type, 'additable_id');
     }
 }

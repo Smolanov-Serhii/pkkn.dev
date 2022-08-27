@@ -30,8 +30,15 @@ class SearchController extends Controller
             ->orWhere('excerpt', 'like', "%$query%")
             ->orWhere('title', 'like', "%$query%")
             ->get();
-//        dd($module_item_props);
 
-        return view('client.search.list', compact('module_item_props', 'query', 'page'));
+        $count = 0;
+
+        foreach ($module_item_props as $item) {
+            if (!is_null($item->owner)) {
+                $count++;
+            }
+        }
+
+        return view('client.search.list', compact('module_item_props', 'query', 'page', 'count'));
     }
 }

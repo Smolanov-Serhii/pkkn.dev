@@ -1,0 +1,47 @@
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 63px;
+  width: 100%;
+  margin-bottom: 96px;
+  a, span{
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 50px rgba(19, 28, 66, 0.1);
+    border-radius: 10px;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    color: #000000;
+    transition: $transition;
+    border: 2px solid transparent;
+  }
+  a{
+    cursor: pointer;
+    &:hover{
+      border: 2px solid #000000;
+    }
+  }
+  span{
+    &:hover{
+      border: 2px solid transparent;
+    }
+  }
+  > a{
+    border: 2px solid #ABB2D0;
+  }
+  &__wrapper{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

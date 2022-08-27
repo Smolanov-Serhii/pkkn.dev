@@ -1,6 +1,7 @@
 
-<div class="field-iteration {{ $module_item->module->name }}-field" id="iteration_">
+<div class="field-iteration {{ $module_item->module->name }}-field">
 @foreach($group as $key => $iteration)
+
     @php
         $iterator_id = $iteration->id;
         //$parent = $parent_iteration_id ?? 'Module_items';
@@ -9,6 +10,7 @@
         @if($key == 0)
             <h4>{{ $iteration->repeater->name }}</h4>
         @endif
+        <div style="width: 100%; display: flex" id="iteration_{{$iteration->id}}">
         @foreach($iteration->props as $prop)
             @php
                 $attribute = $prop->type;
@@ -105,7 +107,9 @@
         >
             <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
+    </div>
 @endforeach
+
     @if($iteration->iterations->count())
         @include('admin.module_items.includes.iterations', [
             'iterations' => $iteration->iterations,

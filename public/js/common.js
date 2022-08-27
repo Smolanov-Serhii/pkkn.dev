@@ -21530,7 +21530,18 @@ $( document ).ready(function() {
             },
         });
     };
-
+    if ($(".production").length){
+        var production = new Swiper(".production .swiper-container", {
+            loop: true,
+            spaceBetween: 20,
+            slidesPerView: 4,
+            freeMode: true,
+            navigation: {
+                nextEl: ".production__navigation-next",
+                prevEl: ".production__navigation-prev",
+            },
+        });
+    };
     if ($(".single-product").length){
         var swiper = new Swiper(".mySwiper", {
             loop: true,
@@ -21576,6 +21587,14 @@ $( document ).ready(function() {
         });
     };
 
+    if ($(".works-page__rubrik").length){
+        $(".works-page__rubrik").click( function(e) {
+            $('.works-page__rubrik input[type="checkbox"]').prop('checked', false);
+            $(this).find('input[type="checkbox"]').prop('checked', true);
+            $('.works-page__rubrik').removeClass('active');
+            $(this).addClass('active');
+        });
+    };
 
     function submitFromAuthForm(e) {
         e.preventDefault();

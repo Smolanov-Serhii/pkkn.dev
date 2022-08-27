@@ -44,7 +44,7 @@ class ModuleItemsRepository
             });
         }
 
-        $items = $query_builder->paginate(2);
+        $items = $query_builder->paginate(16);
 
         return $items;
     }

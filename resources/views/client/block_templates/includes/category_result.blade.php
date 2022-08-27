@@ -1,91 +1,56 @@
 {{--@dd($items)--}}
-<div class="blog-page__contents" id="category_result">
+<div class="works-page__contents" id="category_result">
+    @foreach($items as $item)
+        @php
+            $properties = $item->props->mapWithKeys(function ($prop) {
+                            return [$prop->type->key => $prop->value];
+                            });
 
+        @endphp
+        <div class="works-page__item">
+            <a href="{{ route('client.works.item', ['alias' => $item->seo->alias]) }}"
+               class="works-page__item-img">
+                <img src="{{  url('/') . '/uploads/module_items/' . $properties['thumbnail'] }}"
+                     alt="{{ $properties['title'] }}">
+                <span class="works-page__show">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22" cy="22" r="22" fill="#0074FF"/>
+                        <rect x="22" y="18" width="1" height="9" fill="white"/>
+                        <rect x="18" y="23" width="1" height="9" transform="rotate(-90 18 23)" fill="white"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    @endforeach
+        <div class="pagination">
+            @php
+                $class = "";
+                if($items->onFirstPage()){
+                    $class="disabled";
+                }
+            @endphp
 
-@foreach($items as $item)
-    @php
-        $properties = $item->props->mapWithKeys(function ($prop) {
-                        return [$prop->type->key => $prop->value];
-                        });
+            <a href="{{ $items->url(1) }}" class=" {{$class}} ">
+                <svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.65685 15.0711L0.292893 8.70716C-0.0976308 8.31663 -0.0976308 7.68347 0.292893 7.29294L6.65686 0.928983C7.04738 0.538459 7.68055 0.538459 8.07107 0.928983C8.46159 1.31951 8.46159 1.95267 8.07107 2.3432L3.41421 7.00005L26 7.00005L26 9.00005L3.41421 9.00005L8.07107 13.6569C8.46159 14.0474 8.46159 14.6806 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711Z" fill="#ABB2D0"/>
+                </svg>
+            </a>
 
-
-    @endphp
-
-            <div class="blog-page__item">
-                <a href="{{ route('client.blog.item', ['alias' => $item->seo->alias]) }}"
-                   class="blog-page__item-img">
-                    <img src="{{  url('/') . '/uploads/module_items/' . $properties['thumbnail'] }}"
-                         alt="">
-                </a>
-                <div class="blog-page__item-rubrik">
-                    {{implode(', ', $item->taxonomy_items->map(function($item){return $item->name;})->toArray())}}
-                </div>
-                <a href="{{ route('client.blog.item', ['alias' => $item->seo->alias]) }}"
-                   class="blog-page__item-lnk">
-                    <h2 class="blog-page__item-title">
-                                        {{ $properties['title'] }}
-                    </h2>
-                </a>
-                <div class="blog-page__item-count">
-                    <div class="count">
-                        <div class="wrapper">
-                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_1198_915)">
-                                    <path d="M18.9296 9.27494C18.78 9.05721 15.1842 3.95801 9.49995 3.95801C4.62241 3.95801 0.276089 9.02793 0.0932109 9.24406C-0.0310703 9.39131 -0.0310703 9.60744 0.0932109 9.75547C0.276089 9.9716 4.62241 15.0415 9.49995 15.0415C14.3775 15.0415 18.7238 9.9716 18.9067 9.75547C19.0215 9.61932 19.0318 9.42219 18.9296 9.27494ZM9.49995 14.2499C5.58986 14.2499 1.87211 10.5211 0.927665 9.49979C1.87056 8.47774 5.58433 4.74971 9.49995 4.74971C14.0751 4.74971 17.3043 8.47299 18.0928 9.47841C17.1824 10.4672 13.4433 14.2499 9.49995 14.2499Z"
-                                          fill="#8D8D8D"/>
-                                    <path d="M9.49971 6.33301C7.75328 6.33301 6.33301 7.75328 6.33301 9.49971C6.33301 11.2461 7.75328 12.6664 9.49971 12.6664C11.2461 12.6664 12.6664 11.2461 12.6664 9.49971C12.6664 7.75328 11.2461 6.33301 9.49971 6.33301ZM9.49971 11.8748C8.19029 11.8748 7.12467 10.8092 7.12467 9.49975C7.12467 8.19032 8.19029 7.12471 9.49971 7.12471C10.8091 7.12471 11.8748 8.19032 11.8748 9.49975C11.8748 10.8092 10.8091 11.8748 9.49971 11.8748Z"
-                                          fill="#8D8D8D"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1198_915">
-                                        <rect width="19" height="19" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            {{$item->seo->view_count}}
-                        </div>
-                        <div class="wrapper">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.43 1.07812H2.55441C1.41733 1.07812 0.492188 2.00308 0.492188 3.14035V9.79596C0.492188 10.9307 1.4133 11.8542 2.54709 11.8582V14.8784L6.88751 11.8582H13.43C14.567 11.8582 15.4922 10.933 15.4922 9.79596V3.14035C15.4922 2.00308 14.567 1.07812 13.43 1.07812ZM14.6133 9.79596C14.6133 10.4484 14.0825 10.9793 13.43 10.9793H6.61175L3.42599 13.1961V10.9793H2.55441C1.90192 10.9793 1.37109 10.4484 1.37109 9.79596V3.14035C1.37109 2.48776 1.90192 1.95703 2.55441 1.95703H13.43C14.0825 1.95703 14.6133 2.48776 14.6133 3.14035V9.79596Z"
-                                      fill="#8D8D8D"/>
-                                <path d="M4.50684 4.18359H11.4775V5.0625H4.50684V4.18359Z" fill="#8D8D8D"/>
-                                <path d="M4.50684 6.05859H11.4775V6.9375H4.50684V6.05859Z" fill="#8D8D8D"/>
-                                <path d="M4.50684 7.93359H11.4775V8.8125H4.50684V7.93359Z" fill="#8D8D8D"/>
-                            </svg>
-                            {{$item->comments()->approved()->get()->count()}}
-                        </div>
-                    </div>
-                    <div class="date">
-                                        {{ $properties['date'] }}
-                    </div>
-                </div>
-
-
-    </div>
-
-@endforeach
-
-{{--    <div class="pagination" style="margin-right: 40px">--}}
-{{--        @if(!$items->onFirstPage())--}}
-{{--            <a href="{{ $items->url(1) }}">Начало</a>--}}
-{{--        @endif--}}
-{{--        <ul class="pagination__wrapper">--}}
-{{--            @foreach(range(1, $items->lastPage()) as $page_num)--}}
-{{--                <li>--}}
-{{--                    @if($items->currentPage() == $page_num)--}}
-{{--                        <a class="current">{{ $page_num }}</a>--}}
-{{--                    @else--}}
-{{--                        <a class="pagination__link" href="{{ $items->url($page_num) }}">{{ $page_num }}</a>--}}
-{{--                    @endif--}}
-{{--                </li>--}}
-{{--            @endforeach--}}
-{{--            --}}{{--            <li><a href="#">2</a></li>--}}
-{{--            --}}{{--            <li><a href="#">3</a></li>--}}
-{{--            --}}{{--            <li><span>...</span></li>--}}
-{{--            --}}{{--            <li><a href="#">25</a></li>--}}
-{{--        </ul>--}}
-{{--        <a href="{{ $items->url($items->lastPage()) }}">Конец</a>--}}
-{{--    </div>--}}
+            <ul class="pagination__wrapper">
+                @foreach(range(1, $items->lastPage()) as $page_num)
+                    <li>
+                        @if($items->currentPage() == $page_num)
+                            <span class="current">{{ $page_num }}</span>
+                        @else
+                            <a class="pagination__link" href="{{ $items->url($page_num) }}">{{ $page_num }}</a>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+            <a href="{{ $items->url($items->lastPage()) }}">
+                <svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3431 0.928883L25.7071 7.29284C26.0976 7.68337 26.0976 8.31653 25.7071 8.70706L19.3431 15.071C18.9526 15.4615 18.3195 15.4615 17.9289 15.071C17.5384 14.6805 17.5384 14.0473 17.9289 13.6568L22.5858 8.99995L-1.4624e-06 8.99995L-1.11271e-06 6.99995L22.5858 6.99995L17.9289 2.3431C17.5384 1.95257 17.5384 1.31941 17.9289 0.928883C18.3195 0.538358 18.9526 0.538359 19.3431 0.928883Z" fill="#ABB2D0"/>
+                </svg>
+            </a>
+        </div>
 </div>

@@ -1,0 +1,19 @@
+.productions-page{
+  &__container{
+    .works-page__contents{
+      margin-top: 40px;
+    }
+    .works-page__item{
+      width: calc(25% - 20px);
+    }
+    .works-page__rubriks{
+      margin-top: 50px;
+    }
+  }
+  &__title{
+    margin-bottom: 10px;
+  }
+  &__subtitle{
+    margin-bottom: 10px;
+  }
+}

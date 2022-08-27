@@ -25,7 +25,7 @@ $items = $module->items;
             @endforeach
         </div>
         <div class="works__button">
-            <a href="#" class="blue-button"><span>{{ $contents['button']['value'] ?? '' }}</span></a>
+            <a href="{{ url('/works') }}" class="blue-button"><span>{{ $contents['button']['value'] ?? '' }}</span></a>
         </div>
     </div>
 </section>

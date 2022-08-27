@@ -154,6 +154,7 @@ img{
   }
 }
 @import "parts/header";
+@import "parts/pagination";
 
 @import "parts/banner";
 @import "parts/activity";
@@ -165,5 +166,11 @@ img{
 @import "parts/img-to-text";
 @import "parts/icon-l";
 @import "parts/single-product";
+@import "parts/works-all";
+@import "parts/news-page";
+@import "parts/productions-page";
+@import "parts/about";
+@import "parts/partners";
+@import "parts/production";
 
 @import "parts/footer";

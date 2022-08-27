@@ -266,6 +266,21 @@ return [
             ],
         ],
         [
+            'text'        => 'Производство',
+            'icon'        => '/img/admin/blog.svg',
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Записи ',
+                    'url'  => '/admin/modules/items/list/45',
+                ],
+                [
+                    'text' => 'Рубрики',
+                    'url'  => '/admin/taxonomy/items/list/25',
+                ],
+            ],
+        ],
+        [
             'text'        => 'Продукция',
             'icon'        => '/img/admin/blog.svg',
             'label_color' => 'success',
@@ -291,7 +306,7 @@ return [
                 ],
                 [
                     'text' => 'Рубрики работ',
-                    'url'  => '/admin/taxonomy/items/list/16',
+                    'url'  => '/admin/taxonomy/items/list/24',
                 ],
             ],
         ],
