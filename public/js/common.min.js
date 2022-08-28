@@ -21711,6 +21711,65 @@ $( document ).ready(function() {
                 .add(myPlacemarkWithContent);
         });
     }
+
+    if ($('.contacts').length){
+        $( ".contacts__item-map" ).each(function( index ) {
+            var FirstCoord = $(this).data('first');
+            var SecondCoord = $(this).data('second');
+            var CenterFirstCoord = FirstCoord;
+            var CenterSecondCoord = SecondCoord;
+            ymaps.ready(function () {
+
+                var IconUrl = $('.contacts__list').data('icon');
+                var myMap = new ymaps.Map('map-' + (index + 1) + '', {
+                        center: [CenterFirstCoord, CenterSecondCoord],
+                        controls: [],
+                        zoom: 16
+                    }, {
+                        searchControlProvider: true
+                    }),
+
+
+                    // Создаём макет содержимого.
+                    MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                    ),
+
+                    myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                    }, {
+                        // Опции.
+                        // Необходимо указать данный тип макета.
+                        // Своё изображение иконки метки.
+                        iconImageHref: "",
+                        // Размеры метки.
+                        iconImageSize: [0, 0],
+                        // Смещение левого верхнего угла иконки относительно
+                        // её "ножки" (точки привязки).
+                    }),
+                    myPlacemarkWithContent = new ymaps.Placemark([FirstCoord, SecondCoord], {
+                    }, {
+                        // Опции.
+                        // Необходимо указать данный тип макета.
+                        iconLayout: 'default#imageWithContent',
+                        // Своё изображение иконки метки.
+                        iconImageHref: IconUrl,
+                        // Размеры метки.
+                        iconImageSize: [54, 67],
+                        // Смещение левого верхнего угла иконки относительно
+                        // её "ножки" (точки привязки).
+                        iconImageOffset: [-27, -22],
+                        // Смещение слоя с содержимым относительно слоя с картинкой.
+                        iconContentOffset: [-27, -22],
+                        // Макет содержимого.
+                        iconContentLayout: MyIconContentLayout
+                    });
+                myMap.behaviors.disable('scrollZoom');
+                myMap.geoObjects
+                    // .add(myPlacemark)
+                    .add(myPlacemarkWithContent);
+            });
+        });
+    }
 });
 
 

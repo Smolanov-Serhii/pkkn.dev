@@ -23,12 +23,18 @@ class Gallery extends Model
     public function translations(): HasMany
     {
         return $this
-            ->hasMany(GalleryTranslation::class,'gallery_id', 'id');
+            ->hasMany(GalleryTranslation::class, 'gallery_id', 'id');
     }
 
-    public function translate() {
+    public function translate()
+    {
         return $this
             ->hasOne(GalleryTranslation::class, 'gallery_id', 'id')
             ->current();
+    }
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(GalleryItem::class)->orderBy('order');
     }
 }

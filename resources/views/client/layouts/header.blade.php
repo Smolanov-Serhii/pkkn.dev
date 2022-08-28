@@ -13,14 +13,20 @@
                 <ul class="header__list">
                             @foreach(\App\Models\Menu::where('title', 'header')->first()->getTree() as $item)
                                 @if(isset($item->children))
+
                                         <li class="header__item has-chield">
-                                            <a href="{{local_url($item->slug)}}" class="header__lnk" > {!! $item->title !!}</a>
+                                            @if($item->slug)
+                                                <a href="{{local_url($item->slug)}}" class="header__lnk" >{!! $item->title !!}</a>
+                                            @else
+                                                <span class="header__lnk">{!! $item->title !!}</span>
+                                            @endif
                                             <ul class="header__item-chield">
                                             @foreach($item->children as $m)
                                                 @foreach($m as $in=>$data)
                                                     @if(!is_null($data->img))
                                                         <img width="40" src="{{url('/uploads/menu_items/'.$data->img)}}" alt="">
                                                     @endif
+{{--                                                        @dd(local_url($data->slug))--}}
                                                     <li class="header__item @if(!is_null($data->class) && !empty($data->class)) {{$data->class}} @endif ">
                                                         <a class="header__lnk @if($item->slug == $page->seo->alias) current-page @endif" href="{{local_url($data->slug)}}">{{$data->title}}</a>
                                                     </li>
@@ -28,18 +34,17 @@
                                             @endforeach
                                             </ul>
                                         </li>
-
                                 @else
                                     <li class="header__item">
-                                        <a href="{{local_url($item->slug)}}" class="header__lnk @if($item->slug == $page->seo->alias) current-page @endif" > {!! $item->title !!}</a>
+                                        @if($item->slug)
+                                            <a href="{{local_url($item->slug)}}" class="header__lnk @if($item->slug == $page->seo->alias) current-page @endif" > {!! $item->title !!}</a>
+                                        @else
+                                            <span class="header__lnk @if($item->slug == $page->seo->alias) current-page @endif">{!! $item->title !!}</span>
+                                        @endif
+
                                     </li>
                                 @endif
                             @endforeach
-{{--                    <li class="header__item"><a href="#" class="header__lnk">О компании</a></li>--}}
-{{--                    <li class="header__item"><a href="#" class="header__lnk">Услуги</a></li>--}}
-{{--                    <li class="header__item"><a href="#" class="header__lnk">Продукция</a></li>--}}
-{{--                    <li class="header__item"><a href="#" class="header__lnk">Наши работы</a></li>--}}
-{{--                    <li class="header__item"><a href="#" class="header__lnk">контакты</a></li>--}}
                 </ul>
                 <form action="{{ route('client.search') }}" method="get">
                     <input type="text" placeholder="Поиск" name="query" value="{{ $query ?? '' }}" required>

@@ -134,13 +134,13 @@
                     <div id="menu-content">
                         <div id="result"></div>
                         <div style="min-height: 240px;">
-{{--                            <p>Выберите страницу, модуль или кастомную ссылку в меню.</p>--}}
+                            {{--                            <p>Выберите страницу, модуль или кастомную ссылку в меню.</p>--}}
                             @if($desiredMenu != '')
                                 <ul class="menu ui-sortable" id="menuitems">
                                     @if(!empty($menuitems))
                                         @foreach($menuitems as $key=>$item)
                                             @php $lang_ = config('app.fallback_locale'); @endphp
-                                             <li data-id="{{$item->id}}"><span class="menu-item-bar"><i class="fa fa-arrows"></i> @if(isset($item->name->$lang_)) {{$item->name->$lang_}} @elseif(isset($item->title->$lang_)) {{$item->title->$lang_}} @else @if(empty($item->name)) {{$item->getTitle()}} @else {{$item->getName(config('app.fallback_locale'))}} @endif @endif <a href="#collapse{{$item->id}}" class="pull-right" data-toggle="collapse">+</a></span>
+                                            <li data-id="{{$item->id}}"><span class="menu-item-bar"><i class="fa fa-arrows"></i> @if(isset($item->name->$lang_)) {{$item->name->$lang_}} @elseif(isset($item->title->$lang_)) {{$item->title->$lang_}} @else @if(empty($item->name)) {{$item->getTitle()}} @else {{$item->getName(config('app.fallback_locale'))}} @endif @endif <a href="#collapse{{$item->id}}" class="pull-right" data-toggle="collapse">+</a></span>
                                                 <div class="collapse" id="collapse{{$item->id}}">
                                                     <div class="input-box">
                                                         <form method="post" action="{{url('/admin/menu/update-menuitem')}}/{{$item->id}}" enctype="multipart/form-data">
@@ -277,7 +277,7 @@
                 var menuid = <?=$desiredMenu->id?>;
                 var url = $('#url').val();
                 var link = $('#linktext').val();
-                if(url.length > 0 && link.length > 0){
+                if(link.length > 0){
                     $.ajax({
                         type:"get",
                         data: {menuid:menuid,url:url,link:link},

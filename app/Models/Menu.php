@@ -76,6 +76,8 @@ class Menu extends Model
                 if ($item->type == 'post') {
                     $item->slug = $item['model_type']::where('id', $item['model_id'])->first()->seo->alias ?? '';
                     $item->slug = $item['model_type']::where('id', $item['model_id'])->first()->module->name . '/' . $item->slug;
+                } elseif ($item->type == 'custom') {
+                    $menu->slug = $item->slug;
                 } else {
                     $menu->slug = $item['model_type']::where('id', $item['model_id'])->first()->seo->alias ?? '';
                 }
@@ -93,11 +95,13 @@ class Menu extends Model
                         if ($item->type == 'post') {
                             $child->slug = $item['model_type']::where('id', $item['model_id'])->first()->seo->alias ?? '';
                             $child->slug = $item['model_type']::where('id', $item['model_id'])->first()->module->name . '/' . $item->slug;
+                        } elseif ($item->type == 'custom') {
+                            $child->slug = $menu->slug;
                         } else {
                             $page = $item['model_type']::where('id', $item['model_id'])->first();
                             $child->slug = $page->seo->alias ?? '';
                             if ($page->allParent) {
-                                $child->slug = $page->allParent->seo->alias.'/'.$child->slug;
+                                $child->slug = ($page->allParent->seo->alias!='main')?$page->allParent->seo->alias.'/'.$child->slug:$child->slug;
                             }
                         }
                         $child->type = Menu_items::where('id', $child->id)->value('type');

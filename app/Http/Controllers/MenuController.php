@@ -312,7 +312,11 @@ class MenuController extends Controller
         $menuid = $request->menuid;
         $menu = menu::findOrFail($menuid);
         if($menu->content == ''){
-            $data['title'] = $request->link;
+            $titles = [];
+            foreach(Language::where('enabled', true)->get() as $language) {
+                $titles[$language->iso] = $request->link;
+            }
+            $data['title'] = json_encode($titles);
             $data['slug'] = $request->url;
             $data['type'] = 'custom';
             $data['menu_id'] = $menuid;
@@ -320,14 +324,22 @@ class MenuController extends Controller
             Menu_items::create($data);
         }else{
             $olddata = json_decode($menu->content,true);
-            $data['title'] = $request->link;
+            $titles = [];
+            foreach(Language::where('enabled', true)->get() as $language) {
+                $titles[$language->iso] = $request->link;
+            }
+            $data['title'] = json_encode($titles);
             $data['slug'] = $request->url;
             $data['type'] = 'custom';
             $data['menu_id'] = $menuid;
             $data['updated_at'] = NULL;
             Menu_items::create($data);
             $array = [];
-            $array['title'] = $request->link;
+            $titles = [];
+            foreach(Language::where('enabled', true)->get() as $language) {
+                $titles[$language->iso] = $request->link;
+            }
+            $data['title'] = json_encode($titles);
             $array['slug'] = $request->url;
             $array['name'] = NULL;
             $array['type'] = 'custom';
